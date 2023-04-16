@@ -1,19 +1,10 @@
 let mysql = require("mysql");
 
 let connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "nodejsbasic",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "",
+  database: process.env.DB_DATABASE || "nodejsbasic",
 });
 
-// connection.connect(function (err) {
-//   if (err) {
-//     return console.error("error: " + err.message);
-//   }
-
-//   console.log("Connected!!.");
-//   console.log(connection);
-// });
-
-export default connection;
+module.exports = connection;
