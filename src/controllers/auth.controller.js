@@ -40,4 +40,38 @@ module.exports = {
         res.status(500).json({ error: err });
       });
   },
+  getAll: (_, res) => {
+    authService
+      .getAll()
+      .then((data) => {
+        res.status(200).json({ users: data });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  },
+   //get item by id
+   getUserById: (req, res) => {
+    const id = req.params.id;
+    authService
+      .getUserById(id)
+      .then((data) => {
+        res.status(200).json({ user: data });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  },
+   //delete product by id
+   updateUserById: (req, res) => {
+    const id = req.params.id;
+    authService
+      .updateUserById(id)
+      .then((data) => {
+        res.status(200).json({ user: data });
+      })
+      .catch((err) => {
+        res.status(500).json({ error: err });
+      });
+  },
 };
